@@ -1,0 +1,81 @@
+/* ===== Navbar layout (basic) ===== */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.links{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Optional: hide links on very small screens (for now) */
+@media (max-width: 700px){
+  .links{
+    display: none;
+  }
+}
+
+/* ===== Locale toggle ===== */
+.localeToggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.localeToggle:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.28);
+}
+
+.localeToggle:active{
+  transform: translateY(1px);
+}
+
+.localeCode{
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+}
+
+.localeSep{
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
