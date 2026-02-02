@@ -96,7 +96,6 @@
 .card::before { z-index: 1; }
 .content { z-index: 2; }
 
-
 .card:hover .bg,
 .card:focus-within .bg {
   opacity: 1;
@@ -210,5 +209,30 @@
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ✅ reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(6px);
+  transition: opacity 520ms ease, transform 520ms ease, filter 520ms ease;
+  will-change: opacity, transform, filter;
+}
+
+.revealIn {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .revealIn {
+    transition: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
   }
 }

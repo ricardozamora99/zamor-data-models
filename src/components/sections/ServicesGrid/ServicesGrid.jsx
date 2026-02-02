@@ -1,6 +1,8 @@
-// ServicesGrid.jsx
+"use client";
+
 import styles from "./ServicesGrid.module.css";
 import Container from "@/components/layout/Container";
+import { useInView } from "@/lib/useInView";
 
 const SERVICES = [
   {
@@ -42,8 +44,16 @@ const SERVICES = [
 ];
 
 export default function ServicesGrid({ locale = "en" }) {
+  const { ref, inView } = useInView({ threshold: 0.12 });
+
   return (
-    <section className={styles.section} aria-label="Services">
+    <section
+      ref={ref}
+      className={`${styles.section} ${styles.reveal} ${
+        inView ? styles.revealIn : ""
+      }`}
+      aria-label="Services"
+    >
       <Container>
         <div className={styles.header}>
           <h2 className={styles.title}>Services</h2>
