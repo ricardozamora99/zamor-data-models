@@ -1,14 +1,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Force LIGHT mode everywhere (prevents phone dark-mode from turning text white) */
+  color-scheme: light;
+
+  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 html,
@@ -18,13 +15,10 @@ body {
   min-height: 100%;
 }
 
-
 code, pre, kbd, samp {
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
-
-
-
 
 body {
   color: var(--foreground);
@@ -50,10 +44,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
