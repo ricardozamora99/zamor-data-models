@@ -1,8 +1,22 @@
-export default function HomePage() {
+import Hero from "@/components/sections/Hero/Hero";
+import ProcessSteps from "@/components/sections/ProcessSteps/ProcessSteps";
+import ServicesGrid from "@/components/sections/ServicesGrid/ServicesGrid";
+import FeaturedProjects from "@/components/sections/FeaturedProjects/FeaturedProjects";
+import Overview from "@/components/sections/Overview/Overview";
+
+
+export default function HomePage({ params }) {
+  const { locale } = params;
+
   return (
-    <div>
-      <h1>Zamor Data & Models</h1>
-      <p>Scientific data analysis, modeling & technical solutions.</p>
-    </div>
+    <>
+      <Hero locale={locale} />
+      <Overview />
+      
+      <ProcessSteps />
+      <ServicesGrid />
+
+      <FeaturedProjects locale={locale} />
+    </>
   );
 }

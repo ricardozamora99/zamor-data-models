@@ -1,32 +1,69 @@
-'use client'; // Makes this component run on the browser (Client Component). Needed because we use hooks.
+'use client';
 
-import Link from 'next/link'; // Next.js link component for navigation without full page reload
-import {useLocale} from 'next-intl'; // Hook from next-intl to know the current locale ('en' or 'es')
-import LocaleToggel from './LocaleToggel'; // Our language switch button component
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { useState } from 'react';
+import LocaleToggel from './LocaleToggel';
 
-export default function Navbar() { // Navbar component (exported so other files can import it)
-  const locale = useLocale(); // Reads the current locale from the URL/provider: 'en' or 'es'
+import styles from './Navbar.module.css';
 
-  // Helper function: takes a path like "/services" and returns "/en/services" or "/es/services"
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const locale = useLocale();
+
   const l = (path) => `/${locale}${path}`;
 
-  return ( // JSX to render the navbar HTML
-    <header> {/* Top area of the page */}
-      <strong>Zamor Data & Models</strong>{' '} {/* Site title (bold). {' '} adds a space */}
+  return (
+    <header className={styles.navbar}>
+      <div className={styles.inner}>
 
-      <nav style={{ display: 'inline-block', marginLeft: 12 }}> {/* Navigation links container */}
-        {/* We manually add the locale prefix so links stay inside /en or /es */}
-        <Link href={l('/')} style={{ marginRight: 10 }}>Home</Link>         {/* Goes to /en or /es */}
-        <Link href={l('/services')} style={{ marginRight: 10 }}>Services</Link> {/* Goes to /en/services or /es/services */}
-        <Link href={l('/demos')} style={{ marginRight: 10 }}>Demos</Link>       {/* Goes to /en/demos or /es/demos */}
-        <Link href={l('/projects')} style={{ marginRight: 10 }}>Projects</Link> {/* Goes to /en/projects or /es/projects */}
-        <Link href={l('/about')} style={{ marginRight: 10 }}>About</Link>       {/* Goes to /en/about or /es/about */}
-        <Link href={l('/contact')}>Contact</Link>                               {/* Goes to /en/contact or /es/contact */}
-      </nav>
+        {/* LEFT: Logo */}
+        <div className={styles.left}>
+          <Link href={l('/')} className={styles.brand}>
+            <img
+              src="/brand/ZDM1.png"
+              alt="Zamor Data & Models"
+              className={styles.logo}
+            />
+          </Link>
+        </div>
 
-      <span style={{ marginLeft: 12 }}> {/* Small wrapper to separate the toggle from the links */}
-        <LocaleToggel /> {/* Button that switches /en <-> /es while staying on same page */}
-      </span>
+        {/* CENTER: Desktop links */}
+        <nav className={styles.center}>
+          <Link href={l('/')} className={styles.link}>HOME</Link>
+          <Link href={l('/services')} className={styles.link}>SERVICES</Link>
+          <Link href={l('/demos')} className={styles.link}>DEMOS</Link>
+          <Link href={l('/projects')} className={styles.link}>PROJECTS</Link>
+          <Link href={l('/about')} className={styles.link}>ABOUT</Link>
+          <Link href={l('/contact')} className={styles.link}>CONTACT</Link>
+        </nav>
+
+        {/* RIGHT: Language + Hamburger */}
+        <div className={styles.right}>
+          <LocaleToggel className={styles.localeToggle} />
+
+          <button
+            className={styles.hamburger}
+            aria-label="Open menu"
+            onClick={() => setOpen(o => !o)}
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+    
+<nav className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`}>
+  <Link href={l('/')} className={styles.mobileLink} onClick={() => setOpen(false)}>HOME</Link>
+  <Link href={l('/services')} className={styles.mobileLink} onClick={() => setOpen(false)}>SERVICES</Link>
+  <Link href={l('/demos')} className={styles.mobileLink} onClick={() => setOpen(false)}>DEMOS</Link>
+  <Link href={l('/projects')} className={styles.mobileLink} onClick={() => setOpen(false)}>PROJECTS</Link>
+  <Link href={l('/about')} className={styles.mobileLink} onClick={() => setOpen(false)}>ABOUT</Link>
+  <Link href={l('/contact')} className={styles.mobileLink} onClick={() => setOpen(false)}>CONTACT</Link>
+</nav>
+
+      
     </header>
   );
 }

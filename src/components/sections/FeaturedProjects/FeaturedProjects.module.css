@@ -1,0 +1,245 @@
+.section {
+  padding: 56px 0;
+}
+
+.header {
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+/* background band different from rest */
+.band {
+  position: relative;
+  margin-top: 18px;
+  padding: 28px 0 56px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.12), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(16,185,129,0.10), transparent 55%),
+    linear-gradient(180deg, rgba(10,12,18,0.06), rgba(255,255,255,0.00));
+}
+
+.outer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.outer::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  padding: 6px 0;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  column-gap: 100px;       /* ✅ only left-right spacing */
+  row-gap: 22px;
+  align-items: center;
+}
+
+.projectTitle {
+  margin: 0 0 10px;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.projectDesc {
+  margin: 0 0 14px;
+  opacity: 0.80;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.bullets {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.9;
+}
+.cta:hover { opacity: 1; }
+
+/* image box + inner carousel */
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imageBox {
+  max-width: 100%;
+  width: 650px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgb(255, 255, 255);
+
+  background:
+    rgb(255, 255, 255);
+
+  box-shadow: 0 16px 40px rgba(128, 109, 109, 0.07);
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  animation: imgIn 220ms ease;
+}
+
+
+@keyframes imgIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* outer arrows */
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.70);
+  cursor: pointer;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}
+
+.arrowLeft { left: 14px; }
+.arrowRight { right: 14px; }
+
+.arrowLeft:hover,
+.arrowRight:hover {
+  border-color: rgba(0,0,0,0.22);
+}
+
+/* outer dots */
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.65);
+  cursor: pointer;
+}
+
+.dotActive {
+  background: rgba(0,0,0,0.80);
+  border-color: rgba(0,0,0,0.80);
+}
+
+/* inner image arrows */
+.imgArrowLeft,
+.imgArrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.72);
+  cursor: pointer;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+}
+
+.imgArrowLeft { left: 10px; }
+.imgArrowRight { right: 10px; }
+
+
+/* inner dots (inside image box) */
+.imgDots {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.imgDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.20);
+  background: rgba(255,255,255,0.70);
+  cursor: pointer;
+}
+
+.imgDotActive {
+  background: rgba(0,0,0,0.85);
+  border-color: rgba(0,0,0,0.85);
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .right {
+    justify-content: flex-start;
+  }
+  .imageBox {
+    width: 100%;
+    height: 280px;
+  }
+  .arrowLeft,
+  .arrowRight {
+    display: none; /* swipe projects on mobile */
+  }
+}
