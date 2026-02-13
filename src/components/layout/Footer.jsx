@@ -114,9 +114,7 @@ export default function Footer() {
           <p className={styles.copy}>© {year} Zamor Data &amp; Models</p>
 
           <div className={styles.bottomRight}>
-            <span className={styles.smallNote}>
-              Built for clarity • Minimal &amp; rigorous
-            </span>
+            <span className={styles.smallNote}>Built for clarity • Minimal &amp; rigorous</span>
           </div>
         </div>
       </div>

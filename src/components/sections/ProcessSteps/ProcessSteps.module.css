@@ -30,13 +30,23 @@
   margin-bottom: 18px;
 }
 
+/* ✅ small phrase above title */
+.kicker {
+  font-size: var(--small);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin: 0 0 6px;
+}
+
 .h2 {
   margin: 0 0 6px;
-  font-size: 22px;
+  font-size: calc(var(--title) * 0.78); /* ~22px when title=28 */
 }
 
 .sub {
   margin: 0;
+  font-size: var(--text);
   opacity: 0.75;
   line-height: 1.6;
   max-width: 70ch;
@@ -49,7 +59,7 @@
 }
 
 .hint {
-  font-size: 12px;
+  font-size: var(--small);
   letter-spacing: 0.06em;
   opacity: 0.65;
 }
@@ -98,8 +108,7 @@
   border-radius: 999px;
 }
 
-/* ✅ Responsive fill: grows from start to current step
-   3 steps => 2 intervals, so divide by 2 */
+/* fill */
 .fill {
   position: absolute;
   left: 6px;
@@ -114,11 +123,10 @@
   transition: width 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ✅ Responsive dot: positions at 0%, 50%, 100% of the track */
+/* dot */
 .dot {
   position: absolute;
   top: 10px;
-
   left: calc(6px + (100% - 12px) * var(--active, 0) / 2);
 
   width: 12px;
@@ -132,7 +140,7 @@
   box-shadow: 0 0 0 6px rgba(59,130,246,0.12);
 }
 
-/* ✅ options mini cards row */
+/* options row */
 .options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -176,7 +184,7 @@
 }
 
 .optNum {
-  font-size: 12px;
+  font-size: var(--small);
   letter-spacing: 0.12em;
   opacity: 0.60;
 }
@@ -202,13 +210,13 @@
 
 .optTitle {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--subtitle);
   font-weight: 600;
 }
 
 .optLead {
   margin: 0;
-  font-size: 13px;
+  font-size: calc(var(--text) - 2px);
   line-height: 1.55;
   opacity: 0.82;
 }
@@ -222,7 +230,7 @@
 }
 
 .optMicro {
-  font-size: 12px;
+  font-size: var(--small);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.6;
@@ -236,7 +244,7 @@
   transform: translateX(3px);
 }
 
-/* ✅ stage stack with blur behind */
+/* stage */
 .stage {
   position: relative;
   height: 360px;
@@ -275,7 +283,6 @@
     scale(calc(1 - (var(--dist) * 0.06)));
 }
 
-/* Make ONLY the selected (active) stage card more solid / readable */
 .stageActive {
   z-index: 3;
   opacity: 1;
@@ -303,14 +310,14 @@
 }
 
 .stageNum {
-  font-size: 12px;
+  font-size: var(--small);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.65;
 }
 
 .stagePill {
-  font-size: 11px;
+  font-size: calc(var(--small) - 1px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 6px 10px;
@@ -322,19 +329,19 @@
 
 .stageTitle {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: calc(var(--subtitle) + 2px); /* ~18 */
 }
 
 .stageLead {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: calc(var(--text) - 1px); /* ~14 */
   line-height: 1.6;
   opacity: 0.84;
 }
 
 .stageText {
   margin: 0 0 16px;
-  font-size: 13px;
+  font-size: calc(var(--text) - 2px); /* ~13 */
   line-height: 1.7;
   opacity: 0.78;
   max-width: 90ch;
@@ -349,7 +356,7 @@
 
 .outHead {
   margin: 0 0 10px;
-  font-size: 12px;
+  font-size: var(--small);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.7;
@@ -367,7 +374,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: calc(var(--text) - 2px); /* ~13 */
   opacity: 0.82;
 }
 

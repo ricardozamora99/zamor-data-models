@@ -13,65 +13,65 @@ export default function Overview() {
   const pillars = useMemo(
     () => [
       {
-        tag: "Rigor",
-        title: "Research-grade rigor",
-        short: "Transparent methods, validation checks, reproducible workflows.",
+        tag: "Clarity",
+        title: "Business-ready clarity",
+        short: "Clean metrics, transparent logic, and decisions you can explain.",
 
         // LEFT panel (conceptual)
-        detailTitle: "Built like research",
+        detailTitle: "Built for decision-making",
         detail:
-          "Clear assumptions, validation steps, and reproducible pipelines. You get results you can defend, rerun, and extend.",
-        bullets: ["Validation checks", "Reproducible runs", "Transparent assumptions"],
+          "We define what matters, make assumptions explicit, and deliver outputs your team can trust and act on.",
+        bullets: ["Clear KPIs", "Transparent logic", "Decision-ready outputs"],
 
         // DETAILS (expanded) — concrete deliverables
         moreDetail:
-          "What you actually get: a reproducible package of results with validation evidence.",
+          "What you actually get: a clear package of results with context and decision support.",
         moreBullets: [
-          "Assumptions + parameter ranges documented",
-          "Benchmark/consistency checks included",
-          "Reproducible scripts/configs (seeds when relevant)",
+          "Business goals + success metrics documented",
+          "Assumptions and limitations made explicit",
+          "Simple explanations of what drives results",
           "Versioned outputs + clear changelog",
         ],
       },
       {
         tag: "Custom",
         title: "Custom solutions",
-        short: "Tailored models and pipelines — no templates.",
+        short: "Tailored automation and analytics — no cookie-cutter templates.",
 
         // LEFT panel (conceptual)
-        detailTitle: "Designed for your constraints",
+        detailTitle: "Designed for your workflow",
         detail:
-          "From parameter scans to simulation pipelines: the approach is adapted to your data, constraints, and success metrics.",
-        bullets: ["Model selection", "Parameter scanning", "Fast iteration"],
+          "From reporting automation to operational dashboards: the approach adapts to your data, tools, and constraints.",
+        bullets: ["Workflow automation", "Dashboards & reporting", "Fast iteration"],
 
         // DETAILS (expanded)
         moreDetail:
-          "Custom means the approach is engineered around your constraints, not forced into a template.",
+          "Custom means the solution fits your systems and your team — not the other way around.",
         moreBullets: [
-          "Model/algorithm choice justified for your case",
-          "Pipelines adapted to your data format + scale",
-          "Parameter scans or simulations tailored to goals",
+          "Approach chosen for your data + team constraints",
+          "Pipelines adapted to your formats and scale",
+          "Automation built around real operational steps",
           "Iteration checkpoints with measurable progress",
         ],
       },
       {
         tag: "Delivery",
-        title: "Clear delivery",
-        short: "Clean documentation, actionable outputs, next steps.",
+        title: "Reliable delivery",
+        short: "Clean handoff: documentation, training, and maintainable tooling.",
 
         // LEFT panel (conceptual)
-        detailTitle: "Usable, documented deliverables",
+        detailTitle: "Usable, maintainable deliverables",
         detail:
-          "You receive clean code, clear visuals, and documentation. Not just results — a tool you can use and maintain.",
-        bullets: ["Documentation", "Figures & dashboards", "Next-step guidance"],
+          "You receive clean code, clear visuals, and documentation. Not just outputs — a tool your team can use and maintain.",
+        bullets: ["Documentation", "Dashboards & reports", "Handover support"],
 
         // DETAILS (expanded)
         moreDetail:
-          "Delivery focuses on usable outputs: code, visuals, and documentation you can keep building on.",
+          "Delivery focuses on adoption: clarity, maintainability, and a smooth handoff.",
         moreBullets: [
-          "Clean codebase (structured + commented)",
-          "Plots/tables ready for reports or papers",
-          "Short usage guide + reproducibility notes",
+          "Structured codebase (clean + commented)",
+          "Dashboards/plots ready for stakeholders",
+          "Short usage guide + operational notes",
           "Next-step recommendations + limitations",
         ],
       },
@@ -94,12 +94,12 @@ export default function Overview() {
             <p className={styles.kicker}>WHAT IS THIS?</p>
 
             <h2 className={styles.title}>
-              Scientific consulting for data, modeling, and research-grade software.
+              Data consulting for analytics, automation, and business-ready tools.
             </h2>
 
             <p className={styles.desc}>
-              Zamor Data & Models helps researchers and teams turn complex data into validated models,
-              reproducible pipelines, and clear results — from analysis to deployment-ready tooling.
+              Zamor Data & Models helps teams turn complex data into dashboards, automated workflows,
+              and reliable decision support — from analysis to deployment-ready tooling.
             </p>
 
             <div className={styles.detail}>

@@ -1,18 +1,21 @@
 // Route: src/app/layout.js
-// Goal: keep the code stable.
-// To change fonts later, you only edit ONE line: the import line below.
-
-import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+
+// Change fonts later by editing ONLY these imports:
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 
 const bodyFont = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // regular → bold
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
 });
 
-const monoFont = IBM_Plex_Sans ({
+const monoFont = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,10 +25,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${bodyFont.className} ${monoFont.className}`}>
-        {children}
-      </body>
+    <html lang="en" className={`${bodyFont.variable} ${monoFont.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

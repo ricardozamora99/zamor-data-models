@@ -3,6 +3,15 @@
 .section {
   padding: 56px 0;
 }
+.kicker {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
 
 .header {
   max-width: 720px;
@@ -194,6 +203,7 @@
   font-weight: 600;
   opacity: 0.85;
   transition: opacity 180ms ease, color 220ms ease;
+  color: rgba(42, 27, 27, 0.92); /* <- define color */
 }
 
 .link:hover {

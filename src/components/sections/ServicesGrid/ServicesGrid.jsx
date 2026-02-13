@@ -7,37 +7,37 @@ import { useInView } from "@/lib/useInView";
 const SERVICES = [
   {
     title: "Data Analysis & Modeling",
-    desc: "Rigorous analysis and computational models to understand data and complex systems.",
+    desc: "Structured analysis and custom models to extract insight from complex datasets.",
     tags: ["Python", "Statistics", "Modeling"],
     img: "/services/ser01.png",
   },
   {
     title: "Data Visualization & Communication",
-    desc: "Clear, effective visualizations and summaries to communicate results and insights.",
+    desc: "Clear visual narratives that translate technical results into understandable insight.",
     tags: ["Visualization", "Dashboards", "Reporting"],
     img: "/services/ser02.png",
   },
   {
     title: "Computational Tools & Automation",
-    desc: "Custom scripts and tools to automate analysis and improve reproducibility.",
+    desc: "Custom tools and scripts to automate workflows and reduce repetitive technical tasks.",
     tags: ["Python", "Automation", "Pipelines"],
     img: "/services/ser03.png",
   },
   {
     title: "Technical Web Interfaces",
-    desc: "Web-based interfaces to present data, models, and technical content clearly.",
+    desc: "Interactive interfaces to present data, models, and results in a usable format.",
     tags: ["Web", "Interfaces", "Visualization"],
     img: "/services/ser04.png",
   },
   {
-    title: "Technical Consulting & Scientific Support",
-    desc: "Methodology review, validation, and guidance for complex technical projects.",
-    tags: ["Consulting", "Review", "Strategy"],
+    title: "Technical Consulting & Method Review",
+    desc: "Independent review, validation, and guidance for technically demanding projects.",
+    tags: ["Consulting", "Validation", "Strategy"],
     img: "/services/ser05.png",
   },
   {
     title: "Reporting & Documentation",
-    desc: "Clear reports, assumptions, and handover notes so results remain usable and reusable.",
+    desc: "Structured documentation so results remain clear, reproducible, and extendable.",
     tags: ["Documentation", "Reproducibility", "Handover"],
     img: "/services/ser06.png",
   },
@@ -56,9 +56,12 @@ export default function ServicesGrid({ locale = "en" }) {
     >
       <Container>
         <div className={styles.header}>
+          {/* ✅ small phrase like other sections */}
+          <p className={styles.kicker}>WHAT I DO</p>
+
           <h2 className={styles.title}>Services</h2>
           <p className={styles.subtitle}>
-            Practical, research-grade work — from analysis to deployment.
+            Structured technical work — from analysis and modeling to automation and delivery.
           </p>
         </div>
 
@@ -69,10 +72,8 @@ export default function ServicesGrid({ locale = "en" }) {
               className={styles.card}
               style={{ "--bg": `url(${s.img})` }}
             >
-              {/* hover image layer */}
               <span className={styles.bg} aria-hidden="true" />
 
-              {/* content */}
               <div className={styles.content}>
                 <div className={styles.cardTop}>
                   <h3 className={styles.cardTitle}>{s.title}</h3>

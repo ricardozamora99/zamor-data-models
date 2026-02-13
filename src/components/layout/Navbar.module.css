@@ -8,34 +8,42 @@
 .navbar{
   position: sticky;
   top: 0;
-  z-index: 80;
+  z-index: 1000;
 
-  background: rgba(245,247,255,0.55);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  /* ✅ more solid */
+  background: rgb(245, 247, 255);
 
-  border-bottom: 1px solid rgba(37,99,235,0.10);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  /* ✅ stronger blur + slight saturation */
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
 
-  transition: transform 240ms cubic-bezier(.22,1,.36,1), box-shadow 240ms ease;
+  border-bottom: 1px solid rgba(37,99,235,0.14);
+
+  /* ✅ shadow a bit stronger so it “separates” from hero */
+  box-shadow: 0 12px 34px rgba(0,0,0,0.07);
+
+  transition: transform 240ms cubic-bezier(.22,1,.36,1), box-shadow 240ms ease, background 240ms ease;
   will-change: transform;
 }
 
+/* Keep hidden behavior */
 .navbarHidden{
   transform: translateY(-110%);
   box-shadow: none;
 }
 
+/* ✅ keep your gradient, but reduce it a bit (otherwise it re-adds “transparency feeling”) */
 .navbar::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.10), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(16,185,129,0.08), transparent 55%);
-  opacity: 0.7;
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.08), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(16,185,129,0.06), transparent 55%);
+  opacity: 10;
 }
+
 
 .inner{
   position: relative;
@@ -311,7 +319,6 @@
     font-size: 15px;
     font-weight: 900;
     letter-spacing: 0.06em;
-    text-transform: uppercase;
 
     padding: 14px 18px;
     border-bottom: 1px solid rgba(37,99,235,0.08);

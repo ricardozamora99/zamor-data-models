@@ -113,12 +113,11 @@ export default function FeaturedProjects({ locale = "en" }) {
     setActiveImage((prev) => projects.map((_, i) => prev[i] ?? 0));
   }, [projects.length]);
 
-  // ✅ Only update activeProject when we're *near* a snap point (prevents jitter from tiny scrollLeft noise)
   useEffect(() => {
     const el = outerRef.current;
     if (!el) return;
 
-    const SNAP_EPS = 0.08; // 8% of width: must be close to snap point
+    const SNAP_EPS = 0.08;
 
     const onScroll = () => {
       if (rafRef.current) return;
@@ -133,7 +132,6 @@ export default function FeaturedProjects({ locale = "en" }) {
         const target = idx * width;
         const dist = Math.abs(el.scrollLeft - target);
 
-        // update only if close to the snapped position
         if (dist <= width * SNAP_EPS) {
           const clamped = Math.max(0, Math.min(projects.length - 1, idx));
           setActiveProject((prev) => (prev === clamped ? prev : clamped));
@@ -154,7 +152,7 @@ export default function FeaturedProjects({ locale = "en" }) {
     if (!el) return;
     const width = el.clientWidth;
     el.scrollTo({ left: idx * width, behavior: "smooth" });
-    setActiveProject(idx); // keep UI stable immediately
+    setActiveProject(idx);
   }, []);
 
   const prevProject = () => {
@@ -200,7 +198,9 @@ export default function FeaturedProjects({ locale = "en" }) {
   return (
     <section
       ref={ref}
-      className={`${styles.section} ${styles.reveal} ${revealed ? styles.revealIn : ""}`}
+      className={`${styles.section} ${styles.reveal} ${
+        revealed ? styles.revealIn : ""
+      }`}
       aria-label="Case studies"
     >
       <div className={styles.band}>
@@ -214,7 +214,12 @@ export default function FeaturedProjects({ locale = "en" }) {
           </div>
         </Container>
 
-        <button className={styles.arrowLeft} onClick={prevProject} aria-label="Previous case study">
+        <button
+          className={styles.arrowLeft}
+          onClick={prevProject}
+          aria-label="Previous case study"
+          type="button"
+        >
           ←
         </button>
 
@@ -225,7 +230,10 @@ export default function FeaturedProjects({ locale = "en" }) {
             const isActive = pIdx === activeProject;
 
             return (
-              <div key={p.title} className={`${styles.slide} ${isActive ? styles.slideActive : ""}`}>
+              <div
+                key={p.title}
+                className={`${styles.slide} ${isActive ? styles.slideActive : ""}`}
+              >
                 <Container>
                   <div className={styles.grid}>
                     <div className={styles.left}>
@@ -303,6 +311,7 @@ export default function FeaturedProjects({ locale = "en" }) {
                               className={styles.imgArrowLeft}
                               onClick={() => prevImage(pIdx)}
                               aria-label="Previous figure"
+                              type="button"
                             >
                               ←
                             </button>
@@ -310,6 +319,7 @@ export default function FeaturedProjects({ locale = "en" }) {
                               className={styles.imgArrowRight}
                               onClick={() => nextImage(pIdx)}
                               aria-label="Next figure"
+                              type="button"
                             >
                               →
                             </button>
@@ -318,9 +328,12 @@ export default function FeaturedProjects({ locale = "en" }) {
                               {imgs.map((_, i) => (
                                 <button
                                   key={i}
-                                  className={`${styles.imgDot} ${i === imgIdx ? styles.imgDotActive : ""}`}
+                                  className={`${styles.imgDot} ${
+                                    i === imgIdx ? styles.imgDotActive : ""
+                                  }`}
                                   onClick={() => setImageIndex(pIdx, i)}
                                   aria-label={`Go to figure ${i + 1}`}
+                                  type="button"
                                 />
                               ))}
                             </div>
@@ -363,7 +376,12 @@ export default function FeaturedProjects({ locale = "en" }) {
           })}
         </div>
 
-        <button className={styles.arrowRight} onClick={nextProject} aria-label="Next case study">
+        <button
+          className={styles.arrowRight}
+          onClick={nextProject}
+          aria-label="Next case study"
+          type="button"
+        >
           →
         </button>
 
@@ -374,6 +392,7 @@ export default function FeaturedProjects({ locale = "en" }) {
               className={`${styles.dot} ${i === activeProject ? styles.dotActive : ""}`}
               onClick={() => outerScrollTo(i)}
               aria-label={`Go to case study ${i + 1}`}
+              type="button"
             />
           ))}
         </div>
@@ -381,4 +400,3 @@ export default function FeaturedProjects({ locale = "en" }) {
     </section>
   );
 }
-

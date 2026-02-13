@@ -76,12 +76,11 @@ export default function Navbar() {
 
         {/* CENTER: Desktop links */}
         <nav className={styles.center} aria-label="Primary navigation">
-          <Link href={l('/')} className={styles.link}>HOME</Link>
-          <Link href={l('/services')} className={styles.link}>SERVICES</Link>
-          <Link href={l('/demos')} className={styles.link}>DEMOS</Link>
-          <Link href={l('/projects')} className={styles.link}>PROJECTS</Link>
-          <Link href={l('/about')} className={styles.link}>ABOUT</Link>
-          <Link href={l('/contact')} className={styles.link}>CONTACT</Link>
+          <Link href={l('/')} className={styles.link}>Home</Link>
+          <Link href={l('/services')} className={styles.link}>Services</Link>
+          <Link href={l('/projects')} className={styles.link}>Projects</Link>
+          <Link href={l('/about')} className={styles.link}>About</Link>
+          <Link href={l('/contact')} className={styles.link}>Contact</Link>
         </nav>
 
         {/* RIGHT: Locale toggle + Hamburger */}
@@ -131,7 +130,6 @@ export default function Navbar() {
       <nav className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`} aria-label="Mobile navigation">
         <Link href={l('/')} className={styles.mobileLink} onClick={() => setOpen(false)}>Home</Link>
         <Link href={l('/services')} className={styles.mobileLink} onClick={() => setOpen(false)}>Services</Link>
-        <Link href={l('/demos')} className={styles.mobileLink} onClick={() => setOpen(false)}>Demos</Link>
         <Link href={l('/projects')} className={styles.mobileLink} onClick={() => setOpen(false)}>Projects</Link>
         <Link href={l('/about')} className={styles.mobileLink} onClick={() => setOpen(false)}>About</Link>
         <Link href={l('/contact')} className={styles.mobileLink} onClick={() => setOpen(false)}>Contact</Link>

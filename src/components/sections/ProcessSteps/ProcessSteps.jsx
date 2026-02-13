@@ -67,6 +67,9 @@ export default function ProcessSteps() {
       <Container>
         <div className={styles.head}>
           <div>
+            {/* ✅ small phrase above title */}
+            <p className={styles.kicker}>HOW IT WORKS</p>
+
             <h2 className={styles.h2}>Process</h2>
             <p className={styles.sub}>Choose a step — preview on hover, click to lock.</p>
           </div>
@@ -87,12 +90,7 @@ export default function ProcessSteps() {
           </div>
         </div>
 
-        <div
-          className={styles.shell}
-          style={{
-            "--active": active,
-          }}
-        >
+        <div className={styles.shell} style={{ "--active": active }}>
           {/* timeline */}
           <div className={styles.timeline} aria-hidden="true">
             <span className={styles.track} />
@@ -142,7 +140,7 @@ export default function ProcessSteps() {
           <div className={styles.stage} role="group" aria-label="Selected step details">
             {steps.map((s, i) => {
               const isActive = i === active;
-              const delta = i - active; // -1,0,1
+              const delta = i - active;
               const dist = Math.abs(delta);
 
               return (

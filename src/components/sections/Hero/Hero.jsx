@@ -19,19 +19,19 @@ export default function Hero({ locale = "en" }) {
       <div className={styles.grid}>
         {/* LEFT */}
         <div className={styles.card}>
-          <p className={styles.kicker}>Scientific consulting</p>
+          <p className={styles.kicker}>Data &amp; automation consulting</p>
 
           <div className={styles.titleWrap}>
             <h1 className={styles.title}>
-              Advanced data<br />
-              analysis &amp; modeling solutions
+              Data analysis<br />
+              automation &amp; decision tools
             </h1>
             <span className={styles.accent} aria-hidden="true" />
           </div>
 
           <p className={styles.subtitle}>
-            Expert data analysis, custom modeling, and technical solutions that enable
-            data-driven decisions — from research-grade pipelines to clean interactive tools.
+            We help teams turn messy data into reliable dashboards, automated workflows, and
+            production-ready models — so decisions are faster, clearer, and measurable.
           </p>
 
           <div className={styles.actions}>
@@ -44,10 +44,10 @@ export default function Hero({ locale = "en" }) {
           </div>
 
           <div className={styles.meta}>
-            <span>Physics</span><span className={styles.dot}>•</span>
-            <span>Data</span><span className={styles.dot}>•</span>
-            <span>Code</span><span className={styles.dot}>•</span>
-            <span>Reproducible results</span>
+            <span>Analytics</span><span className={styles.dot}>•</span>
+            <span>Automation</span><span className={styles.dot}>•</span>
+            <span>Dashboards</span><span className={styles.dot}>•</span>
+            <span>Operational results</span>
           </div>
         </div>
 
