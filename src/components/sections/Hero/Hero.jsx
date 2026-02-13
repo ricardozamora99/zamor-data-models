@@ -1,9 +1,13 @@
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import styles from "./Hero.module.css";
 
-export default function Hero({ locale = "en" }) {
+export default function Hero() {
+  const locale = useLocale();
+  const t = useTranslations("Hero");
+
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-label={t("ariaLabel")}>
       {/* Background: gradients + bubbles */}
       <div className={styles.bg} aria-hidden="true">
         <span className={styles.bubble} style={{ "--s": "26px", "--x": "10%", "--y": "22%", "--d": "0s" }} />
@@ -19,46 +23,43 @@ export default function Hero({ locale = "en" }) {
       <div className={styles.grid}>
         {/* LEFT */}
         <div className={styles.card}>
-          <p className={styles.kicker}>Data &amp; automation consulting</p>
+          <p className={styles.kicker}>{t("kicker")}</p>
 
           <div className={styles.titleWrap}>
             <h1 className={styles.title}>
-              Data analysis<br />
-              automation &amp; decision tools
+              {t("titleLine1")}
+              <br />
+              {t("titleLine2")}
             </h1>
             <span className={styles.accent} aria-hidden="true" />
           </div>
 
-          <p className={styles.subtitle}>
-            We help teams turn messy data into reliable dashboards, automated workflows, and
-            production-ready models — so decisions are faster, clearer, and measurable.
-          </p>
+          <p className={styles.subtitle}>{t("subtitle")}</p>
 
           <div className={styles.actions}>
             <a className={styles.primary} href={`/${locale}/contact`}>
-              Get a Quote <span className={styles.arrow} aria-hidden="true">→</span>
+              {t("ctaPrimary")} <span className={styles.arrow} aria-hidden="true">→</span>
             </a>
             <a className={styles.secondary} href={`/${locale}/projects`}>
-              View Projects
+              {t("ctaSecondary")}
             </a>
           </div>
 
-          <div className={styles.meta}>
-            <span>Analytics</span><span className={styles.dot}>•</span>
-            <span>Automation</span><span className={styles.dot}>•</span>
-            <span>Dashboards</span><span className={styles.dot}>•</span>
-            <span>Operational results</span>
+          <div className={styles.meta} aria-label={t("metaAria")}>
+            <span>{t("meta1")}</span><span className={styles.dot}>•</span>
+            <span>{t("meta2")}</span><span className={styles.dot}>•</span>
+            <span>{t("meta3")}</span><span className={styles.dot}>•</span>
+            <span>{t("meta4")}</span>
           </div>
         </div>
 
         {/* RIGHT */}
         <div className={styles.right}>
-          {/* Optional: keep your clean glass plate OR remove it */}
           <span className={styles.orbit} aria-hidden="true" />
 
           <Image
             src="/brand/ZDM2.png"
-            alt="Zamor Data & Models"
+            alt={t("imageAlt")}
             width={900}
             height={900}
             priority

@@ -1,9 +1,334 @@
 {
   "Nav": {
-    "about": "About",
+    "home": "Home",
     "services": "Services",
     "projects": "Projects",
-    "demos": "Demos",
-    "contact": "Contact"
+    "about": "About",
+    "contact": "Contact",
+
+    "primaryNav": "Primary navigation",
+    "mobileNav": "Mobile navigation",
+
+    "langSwitch": "Language switch",
+    "switchToEnglish": "Switch to English",
+    "switchToSpanish": "Switch to Spanish",
+
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+
+  "Hero": {
+    "ariaLabel": "Hero",
+    "kicker": "Data & automation consulting",
+
+    "titleLine1": "Data analysis automation",
+    "titleLine2": "& decision tools",
+
+    "subtitle": "We help teams transform data into reliable dashboards, automated workflows, and production-ready models so decisions are faster, clearer, and measurable.",
+
+    "ctaPrimary": "Get a Quote",
+    "ctaSecondary": "View Projects",
+
+    "metaAria": "Key capabilities",
+    "meta1": "Data analysis",
+    "meta2": "Automation",
+    "meta3": "Dashboards",
+    "meta4": "Operational results",
+
+    "imageAlt": "Zamor Data & Models"
+  },
+  "Overview": {
+    "ariaLabel": "Overview",
+    "kicker": "WHAT IS THIS?",
+    "title": "Data consulting for analytics, automation, and business-ready tools.",
+    "desc": "Zamor Data & Models helps teams turn complex data into dashboards, automated workflows, and reliable decision support — from analysis to deployment-ready tooling.",
+    "pillarsAria": "Pillars",
+    "details": "Details",
+    "pillars": [
+      {
+        "tag": "Clarity",
+        "title": "Business-ready clarity",
+        "short": "Clean metrics, transparent logic, and decisions you can explain.",
+        "detailTitle": "Built for decision-making",
+        "detail": "We define what matters, make assumptions explicit, and deliver outputs your team can trust and act on.",
+        "bullets": ["Clear KPIs", "Transparent logic", "Decision-ready outputs"],
+        "moreDetail": "What you actually get: a clear package of results with context and decision support.",
+        "moreBullets": [
+          "Business goals + success metrics documented",
+          "Assumptions and limitations made explicit",
+          "Simple explanations of what drives results",
+          "Versioned outputs + clear changelog"
+        ]
+      },
+      {
+        "tag": "Custom",
+        "title": "Custom solutions",
+        "short": "Tailored automation and analytics — no cookie-cutter templates.",
+        "detailTitle": "Designed for your workflow",
+        "detail": "From reporting automation to operational dashboards: the approach adapts to your data, tools, and constraints.",
+        "bullets": ["Workflow automation", "Dashboards & reporting", "Fast iteration"],
+        "moreDetail": "Custom means the solution fits your systems and your team — not the other way around.",
+        "moreBullets": [
+          "Approach chosen for your data + team constraints",
+          "Pipelines adapted to your formats and scale",
+          "Automation built around real operational steps",
+          "Iteration checkpoints with measurable progress"
+        ]
+      },
+      {
+        "tag": "Delivery",
+        "title": "Reliable delivery",
+        "short": "Clean handoff: documentation, training, and maintainable tooling.",
+        "detailTitle": "Usable, maintainable deliverables",
+        "detail": "You receive clean code, clear visuals, and documentation. Not just outputs — a tool your team can use and maintain.",
+        "bullets": ["Documentation", "Dashboards & reports", "Handover support"],
+        "moreDetail": "Delivery focuses on adoption: clarity, maintainability, and a smooth handoff.",
+        "moreBullets": [
+          "Structured codebase (clean + commented)",
+          "Dashboards/plots ready for stakeholders",
+          "Short usage guide + operational notes",
+          "Next-step recommendations + limitations"
+        ]
+      }
+    ]
   }
+,
+
+  "Process": {
+    "ariaLabel": "Process",
+    "kicker": "HOW IT WORKS",
+    "title": "Process",
+    "sub": "Choose a step — preview on hover, click to lock.",
+
+    "hintUnlocked": "Hover to preview • Click to lock",
+    "hintLocked": "Locked • Reset to preview",
+    "reset": "Reset",
+
+    "optionsAria": "Process options",
+    "stageAria": "Selected step details",
+
+    "selected": "Selected",
+    "clickToLock": "Click to lock",
+
+    "pillLocked": "LOCKED",
+    "pillPreview": "PREVIEW",
+
+    "outputs": "Outputs",
+
+    "steps": [
+      {
+        "n": "01",
+        "title": "Discover",
+        "lead": "We define the problem, constraints, and what “success” means.",
+        "details": "Alignment on goals, available data, assumptions, and decision criteria — so we reduce rework and move fast with confidence.",
+        "outputs": ["Problem brief", "Data inventory", "Success metrics", "Scope & risks"]
+      },
+      {
+        "n": "02",
+        "title": "Plan",
+        "lead": "We design the approach and choose methods that fit your constraints.",
+        "details": "You get a concrete plan: methods, timelines, evaluation metrics, and deliverables — with risks and trade-offs made explicit.",
+        "outputs": ["Method outline", "Milestones", "Validation plan", "Deliverables list"]
+      },
+      {
+        "n": "03",
+        "title": "Deliver",
+        "lead": "We implement, validate, and deliver results you can reuse and extend.",
+        "details": "Clean code, clear visuals, and documented decisions — shipped with reproducibility and handover in mind.",
+        "outputs": ["Code + docs", "Figures / dashboards", "Validation notes", "Next-step roadmap"]
+      }
+    ]
+  },
+  
+  "Services": {
+    "ariaLabel": "Services",
+    "kicker": "WHAT I DO",
+    "title": "Services",
+    "subtitle": "Structured technical work — from analysis and modeling to automation and delivery.",
+
+    "pill": "Service",
+    "seeDetails": "See details",
+    "tagsAria": "Service tags",
+
+    "items": [
+      {
+        "title": "Data Analysis & Modeling",
+        "desc": "Structured analysis and custom models to extract insight from complex datasets.",
+        "tags": ["Python", "Statistics", "Modeling"],
+        "img": "/services/ser01.png"
+      },
+      {
+        "title": "Data Visualization & Communication",
+        "desc": "Clear visual narratives that translate technical results into understandable insight.",
+        "tags": ["Visualization", "Dashboards", "Reporting"],
+        "img": "/services/ser02.png"
+      },
+      {
+        "title": "Computational Tools & Automation",
+        "desc": "Custom tools and scripts to automate workflows and reduce repetitive technical tasks.",
+        "tags": ["Python", "Automation", "Pipelines"],
+        "img": "/services/ser03.png"
+      },
+      {
+        "title": "Technical Web Interfaces",
+        "desc": "Interactive interfaces to present data, models, and results in a usable format.",
+        "tags": ["Web", "Interfaces", "Visualization"],
+        "img": "/services/ser04.png"
+      },
+      {
+        "title": "Technical Consulting & Method Review",
+        "desc": "Independent review, validation, and guidance for technically demanding projects.",
+        "tags": ["Consulting", "Validation", "Strategy"],
+        "img": "/services/ser05.png"
+      },
+      {
+        "title": "Reporting & Documentation",
+        "desc": "Structured documentation so results remain clear, reproducible, and extendable.",
+        "tags": ["Documentation", "Reproducibility", "Handover"],
+        "img": "/services/ser06.png"
+      }
+    ]
+  },
+  "Featured": {
+    "ariaLabel": "Case studies",
+    "kicker": "PROOF OF WORK",
+    "title": "Validated case studies",
+    "subtitle": "Real problems, real constraints, reproducible results — presented as evidence, not a gallery.",
+
+    "prevCase": "Previous case study",
+    "nextCase": "Next case study",
+    "caseNavAria": "Case study navigation",
+    "goToCase": "Go to case study {n}",
+
+    "domain": "Domain",
+    "stack": "Stack",
+    "outcomesAria": "Key outcomes",
+
+    "problem": "Problem",
+    "approach": "Approach",
+    "validation": "Validation",
+    "deliverables": "Deliverables",
+
+    "evidence": "Evidence",
+    "evidenceHint": "Use arrows to browse figures",
+    "prevFigure": "Previous figure",
+    "nextFigure": "Next figure",
+    "figNavAria": "Figure navigation",
+    "goToFigure": "Go to figure {n}",
+
+    "projects": [
+      {
+        "eyebrow": "CASE STUDY",
+        "title": "Matching cosmological constraints with TeV-scale inverse seesaw",
+        "summary": "Built a numerical pipeline to scan parameter space, solve Boltzmann equations, and reproduce baryon asymmetry while respecting neutrino data constraints.",
+        "meta": {
+          "domain": "Neutrinos • Early Universe",
+          "stack": ["Python", "NumPy", "SciPy", "Matplotlib"],
+          "proof": ["Reproducible scans", "Validation checks", "Constraint matching"]
+        },
+        "case": {
+          "problem": "Need a robust exploration of parameter space with reliable numerical control — not a one-off plot.",
+          "approach": [
+            "Adaptive scans + tuning routines for viable regions",
+            "Boltzmann equation solver with sanity/consistency checks",
+            "Automated plots and verification against target observables"
+          ],
+          "validation": [
+            "Tracks equilibrium behavior and washout regimes",
+            "Cross-checks against experimental / phenomenological bounds",
+            "Reproducible outputs (same inputs → same results)"
+          ],
+          "deliverables": [
+            "Reusable pipeline + configuration presets",
+            "Plots (scan maps, trajectories, asymmetry results)",
+            "Documentation + handover notes"
+          ]
+        },
+        "outcomes": [
+          { "label": "Parameter scan", "value": "automated" },
+          { "label": "Reproducibility", "value": "high" },
+          { "label": "Validation", "value": "built-in" }
+        ],
+        "images": [
+          "/projects/Leptogenesis/plot1.png",
+          "/projects/Leptogenesis/plot2.png",
+          "/projects/Leptogenesis/plot3.png"
+        ],
+        "ctaLabel": "View project details"
+      },
+      {
+        "eyebrow": "CASE STUDY",
+        "title": "Leggett–Garg inequalities tested with neutrino oscillation data",
+        "summary": "Designed a statistical pipeline to evaluate Leggett–Garg signatures using experimental neutrino oscillation datasets and produce clean, publication-grade visuals.",
+        "meta": {
+          "domain": "Quantum Foundations • Oscillations",
+          "stack": ["Python", "Pandas", "NumPy", "Matplotlib"],
+          "proof": ["Data pipeline", "Statistical checks", "Clear reporting"]
+        },
+        "case": {
+          "problem": "Experimental data is messy — the goal was to extract reliable LGI indicators and compare prediction vs data consistently.",
+          "approach": [
+            "Custom processing pipeline for experimental datasets",
+            "Computation of LGI metrics across L/E regimes",
+            "Prediction-vs-data comparison with controlled binning/plots"
+          ],
+          "validation": [
+            "Consistency checks across bins and regimes",
+            "Separation of prediction vs data visualization logic",
+            "Repeatable figure generation for reporting"
+          ],
+          "deliverables": [
+            "Cleaned dataset products + scripts",
+            "Figures and summary tables",
+            "Readable report-ready outputs"
+          ]
+        },
+        "outcomes": [
+          { "label": "Data pipeline", "value": "custom" },
+          { "label": "Figures", "value": "publication-grade" },
+          { "label": "Reporting", "value": "clear" }
+        ],
+        "images": [
+          "/projects/LGinuos/plot1.png",
+          "/projects/LGinuos/plot2.png",
+          "/projects/LGinuos/plot3.png",
+          "/projects/LGinuos/plot4.png"
+        ],
+        "ctaLabel": "View project details"
+      }
+    ]
+  },
+  "Footer": {
+    "ariaLabel": "Site footer",
+
+    "tagline": "Scientific data analysis, modeling & technical solutions.",
+    "capsAria": "Capabilities",
+    "badge1": "Physics",
+    "badge2": "Data",
+    "badge3": "Code",
+    "badge4": "Reproducible",
+
+    "contactTitle": "Contact",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "locationValue": "Remote • Worldwide",
+    "responseLabel": "Response time",
+    "responseValue": "24–48 hours",
+
+    "navTitle": "Navigation",
+    "navAria": "Footer navigation",
+    "navServices": "Services",
+    "navDemos": "Demos",
+    "navProjects": "Projects",
+    "navAbout": "About",
+    "navContact": "Contact",
+
+    "socialTitle": "Social",
+    "metaTitle": "Working style",
+    "metaText": "Clear scope, clean deliverables, and documentation-first handoff.",
+
+    "smallNote": "Built for clarity • Minimal & rigorous"
+  }
+
+
 }

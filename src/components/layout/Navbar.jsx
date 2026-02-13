@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Navbar.module.css';
@@ -11,6 +11,8 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
 
   const locale = useLocale();
+  const t = useTranslations('Nav');
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -75,18 +77,28 @@ export default function Navbar() {
         </div>
 
         {/* CENTER: Desktop links */}
-        <nav className={styles.center} aria-label="Primary navigation">
-          <Link href={l('/')} className={styles.link}>Home</Link>
-          <Link href={l('/services')} className={styles.link}>Services</Link>
-          <Link href={l('/projects')} className={styles.link}>Projects</Link>
-          <Link href={l('/about')} className={styles.link}>About</Link>
-          <Link href={l('/contact')} className={styles.link}>Contact</Link>
+        <nav className={styles.center} aria-label={t('primaryNav')}>
+          <Link href={l('/')} className={styles.link}>
+            {t('home')}
+          </Link>
+          <Link href={l('/services')} className={styles.link}>
+            {t('services')}
+          </Link>
+          <Link href={l('/projects')} className={styles.link}>
+            {t('projects')}
+          </Link>
+          <Link href={l('/about')} className={styles.link}>
+            {t('about')}
+          </Link>
+          <Link href={l('/contact')} className={styles.link}>
+            {t('contact')}
+          </Link>
         </nav>
 
         {/* RIGHT: Locale toggle + Hamburger */}
         <div className={styles.right}>
-          {/* Locale toggle — SAME STRUCTURE as your reference project */}
-          <div className={styles.localeToggle} aria-label="Language switch">
+          {/* Locale toggle */}
+          <div className={styles.localeToggle} aria-label={t('langSwitch')}>
             <span className={styles.cur}>{locale.toUpperCase()}</span>
             <span className={styles.sep}>|</span>
 
@@ -95,21 +107,27 @@ export default function Navbar() {
                 type="button"
                 className={`${styles.opt} ${locale === 'en' ? styles.active : ''}`}
                 onClick={() => switchTo('en')}
-                aria-label="Switch to English"
+                aria-label={t('switchToEnglish')}
               >
-                <span className={styles.flag} aria-hidden="true">🇺🇸</span>
+                <span className={styles.flag} aria-hidden="true">
+                  🇺🇸
+                </span>
                 <span className={styles.txt}>EN</span>
               </button>
 
-              <span className={styles.colon} aria-hidden="true">·</span>
+              <span className={styles.colon} aria-hidden="true">
+                ·
+              </span>
 
               <button
                 type="button"
                 className={`${styles.opt} ${locale === 'es' ? styles.active : ''}`}
                 onClick={() => switchTo('es')}
-                aria-label="Cambiar a Español"
+                aria-label={t('switchToSpanish')}
               >
-                <span className={styles.flag} aria-hidden="true">🇪🇸</span>
+                <span className={styles.flag} aria-hidden="true">
+                  🇪🇸
+                </span>
                 <span className={styles.txt}>ES</span>
               </button>
             </span>
@@ -117,7 +135,7 @@ export default function Navbar() {
 
           <button
             className={styles.hamburger}
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? t('closeMenu') : t('openMenu')}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
           >
@@ -127,12 +145,25 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      <nav className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`} aria-label="Mobile navigation">
-        <Link href={l('/')} className={styles.mobileLink} onClick={() => setOpen(false)}>Home</Link>
-        <Link href={l('/services')} className={styles.mobileLink} onClick={() => setOpen(false)}>Services</Link>
-        <Link href={l('/projects')} className={styles.mobileLink} onClick={() => setOpen(false)}>Projects</Link>
-        <Link href={l('/about')} className={styles.mobileLink} onClick={() => setOpen(false)}>About</Link>
-        <Link href={l('/contact')} className={styles.mobileLink} onClick={() => setOpen(false)}>Contact</Link>
+      <nav
+        className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`}
+        aria-label={t('mobileNav')}
+      >
+        <Link href={l('/')} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {t('home')}
+        </Link>
+        <Link href={l('/services')} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {t('services')}
+        </Link>
+        <Link href={l('/projects')} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {t('projects')}
+        </Link>
+        <Link href={l('/about')} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {t('about')}
+        </Link>
+        <Link href={l('/contact')} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {t('contact')}
+        </Link>
       </nav>
     </header>
   );

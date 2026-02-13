@@ -1,101 +1,25 @@
 "use client";
 
 import { useMemo, useRef, useState, useEffect, useCallback } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import styles from "./FeaturedProjects.module.css";
 import Container from "@/components/layout/Container";
 import { useInView } from "@/lib/useInView";
 
-export default function FeaturedProjects({ locale = "en" }) {
-  const projects = useMemo(
-    () => [
-      {
-        eyebrow: "CASE STUDY",
-        title: "Matching cosmological constraints with TeV-scale inverse seesaw",
-        summary:
-          "Built a numerical pipeline to scan parameter space, solve Boltzmann equations, and reproduce baryon asymmetry while respecting neutrino data constraints.",
-        meta: {
-          domain: "Neutrinos • Early Universe",
-          stack: ["Python", "NumPy", "SciPy", "Matplotlib"],
-          proof: ["Reproducible scans", "Validation checks", "Constraint matching"],
-        },
-        case: {
-          problem:
-            "Need a robust exploration of parameter space with reliable numerical control — not a one-off plot.",
-          approach: [
-            "Adaptive scans + tuning routines for viable regions",
-            "Boltzmann equation solver with sanity/consistency checks",
-            "Automated plots and verification against target observables",
-          ],
-          validation: [
-            "Tracks equilibrium behavior and washout regimes",
-            "Cross-checks against experimental / phenomenological bounds",
-            "Reproducible outputs (same inputs → same results)",
-          ],
-          deliverables: [
-            "Reusable pipeline + configuration presets",
-            "Plots (scan maps, trajectories, asymmetry results)",
-            "Documentation + handover notes",
-          ],
-        },
-        outcomes: [
-          { label: "Parameter scan", value: "automated" },
-          { label: "Reproducibility", value: "high" },
-          { label: "Validation", value: "built-in" },
-        ],
-        images: [
-          "/projects/Leptogenesis/plot1.png",
-          "/projects/Leptogenesis/plot2.png",
-          "/projects/Leptogenesis/plot3.png",
-        ],
-        ctaLabel: "View project details",
-        ctaHref: `/${locale}/projects`,
-      },
-      {
-        eyebrow: "CASE STUDY",
-        title: "Leggett–Garg inequalities tested with neutrino oscillation data",
-        summary:
-          "Designed a statistical pipeline to evaluate Leggett–Garg signatures using experimental neutrino oscillation datasets and produce clean, publication-grade visuals.",
-        meta: {
-          domain: "Quantum Foundations • Oscillations",
-          stack: ["Python", "Pandas", "NumPy", "Matplotlib"],
-          proof: ["Data pipeline", "Statistical checks", "Clear reporting"],
-        },
-        case: {
-          problem:
-            "Experimental data is messy — the goal was to extract reliable LGI indicators and compare prediction vs data consistently.",
-          approach: [
-            "Custom processing pipeline for experimental datasets",
-            "Computation of LGI metrics across L/E regimes",
-            "Prediction-vs-data comparison with controlled binning/plots",
-          ],
-          validation: [
-            "Consistency checks across bins and regimes",
-            "Separation of prediction vs data visualization logic",
-            "Repeatable figure generation for reporting",
-          ],
-          deliverables: [
-            "Cleaned dataset products + scripts",
-            "Figures and summary tables",
-            "Readable report-ready outputs",
-          ],
-        },
-        outcomes: [
-          { label: "Data pipeline", value: "custom" },
-          { label: "Figures", value: "publication-grade" },
-          { label: "Reporting", value: "clear" },
-        ],
-        images: [
-          "/projects/LGinuos/plot1.png",
-          "/projects/LGinuos/plot2.png",
-          "/projects/LGinuos/plot3.png",
-          "/projects/LGinuos/plot4.png",
-        ],
-        ctaLabel: "View project details",
-        ctaHref: `/${locale}/projects`,
-      },
-    ],
-    [locale]
-  );
+export default function FeaturedProjects() {
+  const t = useTranslations("Featured");
+  const locale = useLocale();
+
+  const projects = useMemo(() => {
+    const raw = t.raw("projects");
+    const arr = Array.isArray(raw) ? raw : [];
+
+    // attach locale-aware CTA href without duplicating it in messages
+    return arr.map((p) => ({
+      ...p,
+      ctaHref: `/${locale}/projects`,
+    }));
+  }, [t, locale]);
 
   const { ref, inView } = useInView({ threshold: 0.12 });
   const [revealed, setRevealed] = useState(false);
@@ -198,26 +122,22 @@ export default function FeaturedProjects({ locale = "en" }) {
   return (
     <section
       ref={ref}
-      className={`${styles.section} ${styles.reveal} ${
-        revealed ? styles.revealIn : ""
-      }`}
-      aria-label="Case studies"
+      className={`${styles.section} ${styles.reveal} ${revealed ? styles.revealIn : ""}`}
+      aria-label={t("ariaLabel")}
     >
       <div className={styles.band}>
         <Container>
           <div className={styles.header}>
-            <div className={styles.kicker}>PROOF OF WORK</div>
-            <h2 className={styles.title}>Validated case studies</h2>
-            <p className={styles.subtitle}>
-              Real problems, real constraints, reproducible results — presented as evidence, not a gallery.
-            </p>
+            <div className={styles.kicker}>{t("kicker")}</div>
+            <h2 className={styles.title}>{t("title")}</h2>
+            <p className={styles.subtitle}>{t("subtitle")}</p>
           </div>
         </Container>
 
         <button
           className={styles.arrowLeft}
           onClick={prevProject}
-          aria-label="Previous case study"
+          aria-label={t("prevCase")}
           type="button"
         >
           ←
@@ -243,23 +163,23 @@ export default function FeaturedProjects({ locale = "en" }) {
 
                       <div className={styles.metaRow}>
                         <div className={styles.metaItem}>
-                          <div className={styles.metaLabel}>Domain</div>
+                          <div className={styles.metaLabel}>{t("domain")}</div>
                           <div className={styles.metaValue}>{p.meta.domain}</div>
                         </div>
 
                         <div className={styles.metaItem}>
-                          <div className={styles.metaLabel}>Stack</div>
+                          <div className={styles.metaLabel}>{t("stack")}</div>
                           <div className={styles.pills}>
-                            {p.meta.stack.map((t) => (
-                              <span key={t} className={styles.pill}>
-                                {t}
+                            {p.meta.stack.map((x) => (
+                              <span key={x} className={styles.pill}>
+                                {x}
                               </span>
                             ))}
                           </div>
                         </div>
                       </div>
 
-                      <div className={styles.outcomes} aria-label="Key outcomes">
+                      <div className={styles.outcomes} aria-label={t("outcomesAria")}>
                         {p.outcomes.map((o) => (
                           <div key={o.label} className={styles.outcome}>
                             <span className={styles.outcomeLabel}>{o.label}</span>
@@ -270,12 +190,12 @@ export default function FeaturedProjects({ locale = "en" }) {
 
                       <div className={styles.caseGridLeft}>
                         <div className={styles.caseCard}>
-                          <div className={styles.caseTitle}>Problem</div>
+                          <div className={styles.caseTitle}>{t("problem")}</div>
                           <p className={styles.caseText}>{p.case.problem}</p>
                         </div>
 
                         <div className={styles.caseCard}>
-                          <div className={styles.caseTitle}>Approach</div>
+                          <div className={styles.caseTitle}>{t("approach")}</div>
                           <ul className={styles.caseList}>
                             {p.case.approach.map((x) => (
                               <li key={x}>{x}</li>
@@ -285,14 +205,14 @@ export default function FeaturedProjects({ locale = "en" }) {
                       </div>
 
                       <a className={styles.cta} href={p.ctaHref}>
-                        {p.ctaLabel} →
+                        {p.ctaLabel} <span aria-hidden="true">→</span>
                       </a>
                     </div>
 
                     <div className={styles.right}>
                       <div className={styles.evidenceTop}>
-                        <div className={styles.evidenceTitle}>Evidence</div>
-                        <div className={styles.evidenceHint}>Use arrows to browse figures</div>
+                        <div className={styles.evidenceTitle}>{t("evidence")}</div>
+                        <div className={styles.evidenceHint}>{t("evidenceHint")}</div>
                       </div>
 
                       <div className={styles.imageBox}>
@@ -310,7 +230,7 @@ export default function FeaturedProjects({ locale = "en" }) {
                             <button
                               className={styles.imgArrowLeft}
                               onClick={() => prevImage(pIdx)}
-                              aria-label="Previous figure"
+                              aria-label={t("prevFigure")}
                               type="button"
                             >
                               ←
@@ -318,13 +238,13 @@ export default function FeaturedProjects({ locale = "en" }) {
                             <button
                               className={styles.imgArrowRight}
                               onClick={() => nextImage(pIdx)}
-                              aria-label="Next figure"
+                              aria-label={t("nextFigure")}
                               type="button"
                             >
                               →
                             </button>
 
-                            <div className={styles.imgDots} aria-label="Figure navigation">
+                            <div className={styles.imgDots} aria-label={t("figNavAria")}>
                               {imgs.map((_, i) => (
                                 <button
                                   key={i}
@@ -332,7 +252,7 @@ export default function FeaturedProjects({ locale = "en" }) {
                                     i === imgIdx ? styles.imgDotActive : ""
                                   }`}
                                   onClick={() => setImageIndex(pIdx, i)}
-                                  aria-label={`Go to figure ${i + 1}`}
+                                  aria-label={t("goToFigure", { n: i + 1 })}
                                   type="button"
                                 />
                               ))}
@@ -351,7 +271,7 @@ export default function FeaturedProjects({ locale = "en" }) {
 
                       <div className={styles.caseGridRight}>
                         <div className={styles.caseCard}>
-                          <div className={styles.caseTitle}>Validation</div>
+                          <div className={styles.caseTitle}>{t("validation")}</div>
                           <ul className={styles.caseList}>
                             {p.case.validation.map((x) => (
                               <li key={x}>{x}</li>
@@ -360,7 +280,7 @@ export default function FeaturedProjects({ locale = "en" }) {
                         </div>
 
                         <div className={styles.caseCard}>
-                          <div className={styles.caseTitle}>Deliverables</div>
+                          <div className={styles.caseTitle}>{t("deliverables")}</div>
                           <ul className={styles.caseList}>
                             {p.case.deliverables.map((x) => (
                               <li key={x}>{x}</li>
@@ -379,19 +299,19 @@ export default function FeaturedProjects({ locale = "en" }) {
         <button
           className={styles.arrowRight}
           onClick={nextProject}
-          aria-label="Next case study"
+          aria-label={t("nextCase")}
           type="button"
         >
           →
         </button>
 
-        <div className={styles.dots} aria-label="Case study navigation">
+        <div className={styles.dots} aria-label={t("caseNavAria")}>
           {projects.map((_, i) => (
             <button
               key={i}
               className={`${styles.dot} ${i === activeProject ? styles.dotActive : ""}`}
               onClick={() => outerScrollTo(i)}
-              aria-label={`Go to case study ${i + 1}`}
+              aria-label={t("goToCase", { n: i + 1 })}
               type="button"
             />
           ))}

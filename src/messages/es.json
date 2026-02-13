@@ -1,9 +1,333 @@
 {
   "Nav": {
-    "about": "Acerca de",
+    "home": "Inicio",
     "services": "Servicios",
     "projects": "Proyectos",
-    "demos": "Demos",
-    "contact": "Contacto"
+    "about": "Acerca de",
+    "contact": "Contacto",
+
+    "primaryNav": "Navegación principal",
+    "mobileNav": "Navegación móvil",
+
+    "langSwitch": "Cambiar idioma",
+    "switchToEnglish": "Cambiar a inglés",
+    "switchToSpanish": "Cambiar a español",
+
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+
+  "Hero": {
+    "ariaLabel": "Portada",
+    "kicker": "Consultoría en datos y automatización",
+
+    "titleLine1": "Automatización del análisis de datos",
+    "titleLine2": "y herramientas de decisión",
+
+    "subtitle": "Ayudamos a equipos a transformar datos en dashboards confiables, flujos automatizados y modelos listos para producción, para que las decisiones sean más rápidas, claras y medibles.",
+
+    "ctaPrimary": "Solicitar cotización",
+    "ctaSecondary": "Ver proyectos",
+
+    "metaAria": "Capacidades clave",
+    "meta1": "Análisis de datos",
+    "meta2": "Automatización",
+    "meta3": "Dashboards",
+    "meta4": "Resultados operativos",
+
+    "imageAlt": "Zamor Data & Models"
+  },
+  "Overview": {
+    "ariaLabel": "Resumen",
+    "kicker": "¿QUÉ ES ESTO?",
+    "title": "Consultoría en datos para analítica, automatización y herramientas listas para negocio.",
+    "desc": "Zamor Data & Models ayuda a equipos a convertir datos complejos en dashboards, flujos automatizados y soporte confiable para decisiones — desde el análisis hasta herramientas listas para desplegar.",
+    "pillarsAria": "Pilares",
+    "details": "Detalles",
+    "pillars": [
+      {
+        "tag": "Claridad",
+        "title": "Claridad lista para negocio",
+        "short": "Métricas limpias, lógica transparente y decisiones que puedes explicar.",
+        "detailTitle": "Hecho para decidir",
+        "detail": "Definimos lo importante, hacemos explícitos los supuestos y entregamos resultados en los que tu equipo puede confiar y actuar.",
+        "bullets": ["KPIs claros", "Lógica transparente", "Resultados listos para decidir"],
+        "moreDetail": "Lo que realmente recibes: un paquete claro de resultados con contexto y soporte para decisiones.",
+        "moreBullets": [
+          "Objetivos de negocio + métricas de éxito documentadas",
+          "Supuestos y limitaciones explícitos",
+          "Explicaciones simples de qué impulsa los resultados",
+          "Entregables versionados + registro de cambios"
+        ]
+      },
+      {
+        "tag": "A medida",
+        "title": "Soluciones a medida",
+        "short": "Automatización y analítica adaptadas — sin plantillas genéricas.",
+        "detailTitle": "Diseñado para tu flujo",
+        "detail": "Desde automatización de reportes hasta dashboards operativos: el enfoque se adapta a tus datos, herramientas y restricciones.",
+        "bullets": ["Automatización de procesos", "Dashboards y reportes", "Iteración rápida"],
+        "moreDetail": "A medida significa que la solución encaja con tus sistemas y tu equipo — no al revés.",
+        "moreBullets": [
+          "Enfoque elegido según tus datos + restricciones del equipo",
+          "Pipelines adaptados a tus formatos y escala",
+          "Automatización construida sobre pasos operativos reales",
+          "Checkpoints de iteración con progreso medible"
+        ]
+      },
+      {
+        "tag": "Entrega",
+        "title": "Entrega confiable",
+        "short": "Entrega limpia: documentación, capacitación y herramientas mantenibles.",
+        "detailTitle": "Entregables usables y mantenibles",
+        "detail": "Recibes código limpio, visualizaciones claras y documentación. No solo resultados — una herramienta que tu equipo puede usar y mantener.",
+        "bullets": ["Documentación", "Dashboards e informes", "Soporte de entrega"],
+        "moreDetail": "La entrega se centra en adopción: claridad, mantenibilidad y una transición suave.",
+        "moreBullets": [
+          "Codebase estructurado (limpio y comentado)",
+          "Dashboards/gráficas listos para stakeholders",
+          "Guía corta de uso + notas operativas",
+          "Recomendaciones de siguientes pasos + limitaciones"
+        ]
+      }
+    ]
+  },
+  
+  "Process": {
+    "ariaLabel": "Proceso",
+    "kicker": "CÓMO FUNCIONA",
+    "title": "Proceso",
+    "sub": "Elige un paso — previsualiza al pasar el mouse y haz clic para fijar.",
+
+    "hintUnlocked": "Pasa el mouse para previsualizar • Clic para fijar",
+    "hintLocked": "Fijado • Reinicia para previsualizar",
+    "reset": "Reiniciar",
+
+    "optionsAria": "Opciones del proceso",
+    "stageAria": "Detalles del paso seleccionado",
+
+    "selected": "Seleccionado",
+    "clickToLock": "Clic para fijar",
+
+    "pillLocked": "FIJADO",
+    "pillPreview": "VISTA PREVIA",
+
+    "outputs": "Entregables",
+
+    "steps": [
+      {
+        "n": "01",
+        "title": "Descubrir",
+        "lead": "Definimos el problema, las restricciones y qué significa “éxito”.",
+        "details": "Alineamos objetivos, datos disponibles, supuestos y criterios de decisión — para reducir retrabajo y avanzar rápido con confianza.",
+        "outputs": ["Resumen del problema", "Inventario de datos", "Métricas de éxito", "Alcance y riesgos"]
+      },
+      {
+        "n": "02",
+        "title": "Planificar",
+        "lead": "Diseñamos el enfoque y elegimos métodos que se ajusten a tus restricciones.",
+        "details": "Recibes un plan concreto: métodos, tiempos, métricas de evaluación y entregables — con riesgos y trade-offs explícitos.",
+        "outputs": ["Esquema de métodos", "Hitos", "Plan de validación", "Lista de entregables"]
+      },
+      {
+        "n": "03",
+        "title": "Entregar",
+        "lead": "Implementamos, validamos y entregamos resultados que puedas reutilizar y extender.",
+        "details": "Código limpio, visualizaciones claras y decisiones documentadas — con reproducibilidad y entrega en mente.",
+        "outputs": ["Código + documentación", "Gráficas / dashboards", "Notas de validación", "Roadmap de siguientes pasos"]
+      }
+    ]
+  },
+
+  "Services": {
+    "ariaLabel": "Servicios",
+    "kicker": "LO QUE HAGO",
+    "title": "Servicios",
+    "subtitle": "Trabajo técnico estructurado — desde análisis y modelado hasta automatización y entrega.",
+
+    "pill": "Servicio",
+    "seeDetails": "Ver detalles",
+    "tagsAria": "Etiquetas del servicio",
+
+    "items": [
+      {
+        "title": "Análisis de datos y modelado",
+        "desc": "Análisis estructurado y modelos a medida para extraer valor de conjuntos de datos complejos.",
+        "tags": ["Python", "Estadística", "Modelado"],
+        "img": "/services/ser01.png"
+      },
+      {
+        "title": "Visualización de datos y comunicación",
+        "desc": "Narrativas visuales claras para traducir resultados técnicos en información entendible.",
+        "tags": ["Visualización", "Dashboards", "Reportes"],
+        "img": "/services/ser02.png"
+      },
+      {
+        "title": "Herramientas computacionales y automatización",
+        "desc": "Herramientas y scripts a medida para automatizar flujos de trabajo y reducir tareas repetitivas.",
+        "tags": ["Python", "Automatización", "Pipelines"],
+        "img": "/services/ser03.png"
+      },
+      {
+        "title": "Interfaces web técnicas",
+        "desc": "Interfaces interactivas para presentar datos, modelos y resultados de forma usable.",
+        "tags": ["Web", "Interfaces", "Visualización"],
+        "img": "/services/ser04.png"
+      },
+      {
+        "title": "Consultoría técnica y revisión de métodos",
+        "desc": "Revisión independiente, validación y guía para proyectos técnicamente exigentes.",
+        "tags": ["Consultoría", "Validación", "Estrategia"],
+        "img": "/services/ser05.png"
+      },
+      {
+        "title": "Reportes y documentación",
+        "desc": "Documentación estructurada para que los resultados sean claros, reproducibles y extensibles.",
+        "tags": ["Documentación", "Reproducibilidad", "Entrega"],
+        "img": "/services/ser06.png"
+      }
+    ]
+  },
+  "Featured": {
+    "ariaLabel": "Casos de estudio",
+    "kicker": "PRUEBA DE TRABAJO",
+    "title": "Casos de estudio validados",
+    "subtitle": "Problemas reales, restricciones reales, resultados reproducibles — presentados como evidencia, no como una galería.",
+
+    "prevCase": "Caso de estudio anterior",
+    "nextCase": "Siguiente caso de estudio",
+    "caseNavAria": "Navegación de casos de estudio",
+    "goToCase": "Ir al caso de estudio {n}",
+
+    "domain": "Dominio",
+    "stack": "Stack",
+    "outcomesAria": "Resultados clave",
+
+    "problem": "Problema",
+    "approach": "Enfoque",
+    "validation": "Validación",
+    "deliverables": "Entregables",
+
+    "evidence": "Evidencia",
+    "evidenceHint": "Usa las flechas para navegar las figuras",
+    "prevFigure": "Figura anterior",
+    "nextFigure": "Siguiente figura",
+    "figNavAria": "Navegación de figuras",
+    "goToFigure": "Ir a la figura {n}",
+
+    "projects": [
+      {
+        "eyebrow": "CASO DE ESTUDIO",
+        "title": "Ajuste de restricciones cosmológicas con inverse seesaw a escala TeV",
+        "summary": "Desarrollé un pipeline numérico para escanear el espacio de parámetros, resolver ecuaciones de Boltzmann y reproducir la asimetría bariónica respetando restricciones de datos de neutrinos.",
+        "meta": {
+          "domain": "Neutrinos • Universo temprano",
+          "stack": ["Python", "NumPy", "SciPy", "Matplotlib"],
+          "proof": ["Escaneos reproducibles", "Chequeos de validación", "Ajuste a restricciones"]
+        },
+        "case": {
+          "problem": "Se necesitaba una exploración robusta del espacio de parámetros con control numérico confiable — no una figura aislada.",
+          "approach": [
+            "Escaneos adaptativos + rutinas de ajuste para regiones viables",
+            "Solucionador de ecuaciones de Boltzmann con chequeos de consistencia",
+            "Gráficas automatizadas y verificación contra observables objetivo"
+          ],
+          "validation": [
+            "Monitorea comportamiento de equilibrio y regímenes de washout",
+            "Cruza resultados con cotas experimentales / fenomenológicas",
+            "Salidas reproducibles (mismas entradas → mismos resultados)"
+          ],
+          "deliverables": [
+            "Pipeline reutilizable + presets de configuración",
+            "Gráficas (mapas de escaneo, trayectorias, resultados de asimetría)",
+            "Documentación + notas de entrega"
+          ]
+        },
+        "outcomes": [
+          { "label": "Escaneo de parámetros", "value": "automatizado" },
+          { "label": "Reproducibilidad", "value": "alta" },
+          { "label": "Validación", "value": "integrada" }
+        ],
+        "images": [
+          "/projects/Leptogenesis/plot1.png",
+          "/projects/Leptogenesis/plot2.png",
+          "/projects/Leptogenesis/plot3.png"
+        ],
+        "ctaLabel": "Ver detalles del proyecto"
+      },
+      {
+        "eyebrow": "CASO DE ESTUDIO",
+        "title": "Desigualdades de Leggett–Garg probadas con datos de oscilaciones de neutrinos",
+        "summary": "Diseñé un pipeline estadístico para evaluar firmas de Leggett–Garg usando datasets experimentales de oscilaciones de neutrinos y producir visualizaciones limpias, listas para publicación.",
+        "meta": {
+          "domain": "Fundamentos cuánticos • Oscilaciones",
+          "stack": ["Python", "Pandas", "NumPy", "Matplotlib"],
+          "proof": ["Pipeline de datos", "Chequeos estadísticos", "Reporte claro"]
+        },
+        "case": {
+          "problem": "Los datos experimentales son desordenados — el objetivo era extraer indicadores LGI confiables y comparar predicción vs datos de forma consistente.",
+          "approach": [
+            "Pipeline de procesamiento a medida para datasets experimentales",
+            "Cálculo de métricas LGI a lo largo de regímenes de L/E",
+            "Comparación predicción-vs-datos con binning y gráficas controladas"
+          ],
+          "validation": [
+            "Chequeos de consistencia entre bins y regímenes",
+            "Separación de la lógica de visualización para predicción y datos",
+            "Generación repetible de figuras para reportes"
+          ],
+          "deliverables": [
+            "Productos de datos limpios + scripts",
+            "Figuras y tablas resumen",
+            "Entregables legibles y listos para reporte"
+          ]
+        },
+        "outcomes": [
+          { "label": "Pipeline de datos", "value": "a medida" },
+          { "label": "Figuras", "value": "listas para publicación" },
+          { "label": "Reporte", "value": "claro" }
+        ],
+        "images": [
+          "/projects/LGinuos/plot1.png",
+          "/projects/LGinuos/plot2.png",
+          "/projects/LGinuos/plot3.png",
+          "/projects/LGinuos/plot4.png"
+        ],
+        "ctaLabel": "Ver detalles del proyecto"
+      }
+    ]
+  },
+  "Footer": {
+    "ariaLabel": "Pie de página",
+
+    "tagline": "Análisis científico de datos, modelado y soluciones técnicas.",
+    "capsAria": "Capacidades",
+    "badge1": "Física",
+    "badge2": "Datos",
+    "badge3": "Código",
+    "badge4": "Reproducible",
+
+    "contactTitle": "Contacto",
+    "emailLabel": "Correo",
+    "locationLabel": "Ubicación",
+    "locationValue": "Remoto • Global",
+    "responseLabel": "Tiempo de respuesta",
+    "responseValue": "24–48 horas",
+
+    "navTitle": "Navegación",
+    "navAria": "Navegación del pie de página",
+    "navServices": "Servicios",
+    "navDemos": "Demos",
+    "navProjects": "Proyectos",
+    "navAbout": "Acerca de",
+    "navContact": "Contacto",
+
+    "socialTitle": "Redes",
+    "metaTitle": "Forma de trabajo",
+    "metaText": "Alcance claro, entregables limpios y entrega con documentación primero.",
+
+    "smallNote": "Hecho para claridad • Minimalista y riguroso"
   }
+
+
 }

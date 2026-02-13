@@ -1,42 +1,20 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./ProcessSteps.module.css";
 import Container from "@/components/layout/Container";
 import { useInView } from "@/lib/useInView";
 
 export default function ProcessSteps() {
+  const t = useTranslations("Process");
+
   const { ref, inView } = useInView();
 
-  const steps = useMemo(
-    () => [
-      {
-        n: "01",
-        title: "Discover",
-        lead: "We define the problem, constraints, and what “success” means.",
-        details:
-          "Alignment on goals, available data, assumptions, and decision criteria — so we reduce rework and move fast with confidence.",
-        outputs: ["Problem brief", "Data inventory", "Success metrics", "Scope & risks"],
-      },
-      {
-        n: "02",
-        title: "Plan",
-        lead: "We design the approach and choose methods that fit your constraints.",
-        details:
-          "You get a concrete plan: methods, timelines, evaluation metrics, and deliverables — with risks and trade-offs made explicit.",
-        outputs: ["Method outline", "Milestones", "Validation plan", "Deliverables list"],
-      },
-      {
-        n: "03",
-        title: "Deliver",
-        lead: "We implement, validate, and deliver results you can reuse and extend.",
-        details:
-          "Clean code, clear visuals, and documented decisions — shipped with reproducibility and handover in mind.",
-        outputs: ["Code + docs", "Figures / dashboards", "Validation notes", "Next-step roadmap"],
-      },
-    ],
-    []
-  );
+  const steps = useMemo(() => {
+    const raw = t.raw("steps");
+    return Array.isArray(raw) ? raw : [];
+  }, [t]);
 
   const [active, setActive] = useState(0);
   const [locked, setLocked] = useState(false);
@@ -56,7 +34,7 @@ export default function ProcessSteps() {
     <section
       ref={ref}
       className={`${styles.section} ${styles.reveal} ${inView ? styles.in : ""}`}
-      aria-label="Process"
+      aria-label={t("ariaLabel")}
       onMouseMove={(e) => {
         const el = e.currentTarget;
         const r = el.getBoundingClientRect();
@@ -67,17 +45,17 @@ export default function ProcessSteps() {
       <Container>
         <div className={styles.head}>
           <div>
-            {/* ✅ small phrase above title */}
-            <p className={styles.kicker}>HOW IT WORKS</p>
+            <p className={styles.kicker}>{t("kicker")}</p>
 
-            <h2 className={styles.h2}>Process</h2>
-            <p className={styles.sub}>Choose a step — preview on hover, click to lock.</p>
+            <h2 className={styles.h2}>{t("title")}</h2>
+            <p className={styles.sub}>{t("sub")}</p>
           </div>
 
           <div className={styles.actions}>
             <span className={styles.hint}>
-              {locked ? "Locked • Reset to preview" : "Hover to preview • Click to lock"}
+              {locked ? t("hintLocked") : t("hintUnlocked")}
             </span>
+
             <button
               type="button"
               className={styles.reset}
@@ -85,7 +63,7 @@ export default function ProcessSteps() {
               aria-disabled={!locked}
               disabled={!locked}
             >
-              Reset
+              {t("reset")}
             </button>
           </div>
         </div>
@@ -99,7 +77,7 @@ export default function ProcessSteps() {
           </div>
 
           {/* TOP OPTIONS (mini cards) */}
-          <div className={styles.options} role="tablist" aria-label="Process options">
+          <div className={styles.options} role="tablist" aria-label={t("optionsAria")}>
             {steps.map((s, i) => {
               const isActive = i === active;
               return (
@@ -125,7 +103,7 @@ export default function ProcessSteps() {
 
                   <div className={styles.optFoot}>
                     <span className={styles.optMicro}>
-                      {locked && isActive ? "Selected" : "Click to lock"}
+                      {locked && isActive ? t("selected") : t("clickToLock")}
                     </span>
                     <span className={styles.optArrow} aria-hidden="true">
                       →
@@ -137,7 +115,7 @@ export default function ProcessSteps() {
           </div>
 
           {/* STAGE (stack + blur behind) */}
-          <div className={styles.stage} role="group" aria-label="Selected step details">
+          <div className={styles.stage} role="group" aria-label={t("stageAria")}>
             {steps.map((s, i) => {
               const isActive = i === active;
               const delta = i - active;
@@ -158,7 +136,7 @@ export default function ProcessSteps() {
                   <div className={styles.stageTop}>
                     <span className={styles.stageNum}>{s.n}</span>
                     <span className={styles.stagePill}>
-                      {locked && isActive ? "LOCKED" : "PREVIEW"}
+                      {locked && isActive ? t("pillLocked") : t("pillPreview")}
                     </span>
                   </div>
 
@@ -167,7 +145,7 @@ export default function ProcessSteps() {
                   <p className={styles.stageText}>{s.details}</p>
 
                   <div className={styles.outBox}>
-                    <p className={styles.outHead}>Outputs</p>
+                    <p className={styles.outHead}>{t("outputs")}</p>
                     <ul className={styles.outList}>
                       {s.outputs.map((x) => (
                         <li key={x} className={styles.outItem}>
