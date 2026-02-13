@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import styles from "./FeaturedProjects.module.css";
 import Container from "@/components/layout/Container";
-import { useInView } from "@/lib/useInView"; // ✅ ADD
+import { useInView } from "@/lib/useInView";
 
 export default function FeaturedProjects({ locale = "en" }) {
   const projects = useMemo(
@@ -97,59 +97,64 @@ export default function FeaturedProjects({ locale = "en" }) {
     [locale]
   );
 
-  // ✅ ADD: reveal-on-scroll hook (same idea as your first sections)
   const { ref, inView } = useInView({ threshold: 0.12 });
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    if (inView) setRevealed(true);
+  }, [inView]);
 
-  // --- OUTER (projects) slider ---
   const outerRef = useRef(null);
-  const [activeProject, setActiveProject] = useState(0);
+  const rafRef = useRef(0);
 
-  // --- INNER (images) slider state per project ---
+  const [activeProject, setActiveProject] = useState(0);
   const [activeImage, setActiveImage] = useState(() => projects.map(() => 0));
 
-  // Sync activeImage if projects change
   useEffect(() => {
     setActiveImage((prev) => projects.map((_, i) => prev[i] ?? 0));
   }, [projects.length]);
 
-  // Update activeProject while scrolling outer
+  // ✅ Only update activeProject when we're *near* a snap point (prevents jitter from tiny scrollLeft noise)
   useEffect(() => {
     const el = outerRef.current;
     if (!el) return;
 
+    const SNAP_EPS = 0.08; // 8% of width: must be close to snap point
+
     const onScroll = () => {
-      const width = el.clientWidth;
-      const idx = Math.round(el.scrollLeft / width);
-      setActiveProject(Math.max(0, Math.min(projects.length - 1, idx)));
+      if (rafRef.current) return;
+
+      rafRef.current = window.requestAnimationFrame(() => {
+        rafRef.current = 0;
+
+        const width = el.clientWidth || 1;
+        const raw = el.scrollLeft / width;
+        const idx = Math.round(raw);
+
+        const target = idx * width;
+        const dist = Math.abs(el.scrollLeft - target);
+
+        // update only if close to the snapped position
+        if (dist <= width * SNAP_EPS) {
+          const clamped = Math.max(0, Math.min(projects.length - 1, idx));
+          setActiveProject((prev) => (prev === clamped ? prev : clamped));
+        }
+      });
     };
 
     el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [projects.length]);
-
-  // ✅ FIX: prevent the outer slider from "capturing" vertical wheel scroll.
-  // Vertical wheel scroll moves the PAGE. Horizontal gestures still work.
-  useEffect(() => {
-    const el = outerRef.current;
-    if (!el) return;
-
-    const onWheel = (e) => {
-      const isHorizontalGesture = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      if (isHorizontalGesture) return;
-
-      e.preventDefault();
-      window.scrollBy({ top: e.deltaY, left: 0, behavior: "auto" });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
     };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, []);
+  }, [projects.length]);
 
   const outerScrollTo = useCallback((idx) => {
     const el = outerRef.current;
     if (!el) return;
     const width = el.clientWidth;
     el.scrollTo({ left: idx * width, behavior: "smooth" });
+    setActiveProject(idx); // keep UI stable immediately
   }, []);
 
   const prevProject = () => {
@@ -162,7 +167,6 @@ export default function FeaturedProjects({ locale = "en" }) {
     outerScrollTo(nextIdx);
   };
 
-  // Keyboard: left/right to switch case studies
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowLeft") prevProject();
@@ -173,7 +177,6 @@ export default function FeaturedProjects({ locale = "en" }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeProject, projects.length]);
 
-  // --- image controls ---
   const setImageIndex = (pIdx, imgIdx) => {
     setActiveImage((prev) => {
       const copy = [...prev];
@@ -197,9 +200,7 @@ export default function FeaturedProjects({ locale = "en" }) {
   return (
     <section
       ref={ref}
-      className={`${styles.section} ${styles.reveal} ${
-        inView ? styles.revealIn : ""
-      }`}
+      className={`${styles.section} ${styles.reveal} ${revealed ? styles.revealIn : ""}`}
       aria-label="Case studies"
     >
       <div className={styles.band}>
@@ -208,18 +209,12 @@ export default function FeaturedProjects({ locale = "en" }) {
             <div className={styles.kicker}>PROOF OF WORK</div>
             <h2 className={styles.title}>Validated case studies</h2>
             <p className={styles.subtitle}>
-              Real problems, real constraints, reproducible results — presented
-              as evidence, not a gallery.
+              Real problems, real constraints, reproducible results — presented as evidence, not a gallery.
             </p>
           </div>
         </Container>
 
-        {/* Outer arrows */}
-        <button
-          className={styles.arrowLeft}
-          onClick={prevProject}
-          aria-label="Previous case study"
-        >
+        <button className={styles.arrowLeft} onClick={prevProject} aria-label="Previous case study">
           ←
         </button>
 
@@ -230,21 +225,14 @@ export default function FeaturedProjects({ locale = "en" }) {
             const isActive = pIdx === activeProject;
 
             return (
-              <div
-                key={p.title}
-                className={`${styles.slide} ${
-                  isActive ? styles.slideActive : ""
-                }`}
-              >
+              <div key={p.title} className={`${styles.slide} ${isActive ? styles.slideActive : ""}`}>
                 <Container>
                   <div className={styles.grid}>
-                    {/* LEFT */}
                     <div className={styles.left}>
                       <div className={styles.eyebrow}>{p.eyebrow}</div>
                       <h3 className={styles.projectTitle}>{p.title}</h3>
                       <p className={styles.projectDesc}>{p.summary}</p>
 
-                      {/* Meta row */}
                       <div className={styles.metaRow}>
                         <div className={styles.metaItem}>
                           <div className={styles.metaLabel}>Domain</div>
@@ -263,24 +251,15 @@ export default function FeaturedProjects({ locale = "en" }) {
                         </div>
                       </div>
 
-                      {/* Outcome chips */}
-                      <div
-                        className={styles.outcomes}
-                        aria-label="Key outcomes"
-                      >
+                      <div className={styles.outcomes} aria-label="Key outcomes">
                         {p.outcomes.map((o) => (
                           <div key={o.label} className={styles.outcome}>
-                            <span className={styles.outcomeLabel}>
-                              {o.label}
-                            </span>
-                            <span className={styles.outcomeValue}>
-                              {o.value}
-                            </span>
+                            <span className={styles.outcomeLabel}>{o.label}</span>
+                            <span className={styles.outcomeValue}>{o.value}</span>
                           </div>
                         ))}
                       </div>
 
-                      {/* ONLY Problem + Approach on the left */}
                       <div className={styles.caseGridLeft}>
                         <div className={styles.caseCard}>
                           <div className={styles.caseTitle}>Problem</div>
@@ -302,13 +281,10 @@ export default function FeaturedProjects({ locale = "en" }) {
                       </a>
                     </div>
 
-                    {/* RIGHT */}
                     <div className={styles.right}>
                       <div className={styles.evidenceTop}>
                         <div className={styles.evidenceTitle}>Evidence</div>
-                        <div className={styles.evidenceHint}>
-                          Use arrows to browse figures
-                        </div>
+                        <div className={styles.evidenceHint}>Use arrows to browse figures</div>
                       </div>
 
                       <div className={styles.imageBox}>
@@ -317,6 +293,8 @@ export default function FeaturedProjects({ locale = "en" }) {
                           className={styles.image}
                           src={imgs[imgIdx]}
                           alt=""
+                          loading="lazy"
+                          draggable={false}
                         />
 
                         {imgs.length > 1 && (
@@ -336,16 +314,11 @@ export default function FeaturedProjects({ locale = "en" }) {
                               →
                             </button>
 
-                            <div
-                              className={styles.imgDots}
-                              aria-label="Figure navigation"
-                            >
+                            <div className={styles.imgDots} aria-label="Figure navigation">
                               {imgs.map((_, i) => (
                                 <button
                                   key={i}
-                                  className={`${styles.imgDot} ${
-                                    i === imgIdx ? styles.imgDotActive : ""
-                                  }`}
+                                  className={`${styles.imgDot} ${i === imgIdx ? styles.imgDotActive : ""}`}
                                   onClick={() => setImageIndex(pIdx, i)}
                                   aria-label={`Go to figure ${i + 1}`}
                                 />
@@ -363,7 +336,6 @@ export default function FeaturedProjects({ locale = "en" }) {
                         ))}
                       </div>
 
-                      {/* Validation + Deliverables moved under the plot */}
                       <div className={styles.caseGridRight}>
                         <div className={styles.caseCard}>
                           <div className={styles.caseTitle}>Validation</div>
@@ -391,22 +363,15 @@ export default function FeaturedProjects({ locale = "en" }) {
           })}
         </div>
 
-        <button
-          className={styles.arrowRight}
-          onClick={nextProject}
-          aria-label="Next case study"
-        >
+        <button className={styles.arrowRight} onClick={nextProject} aria-label="Next case study">
           →
         </button>
 
-        {/* Outer dots */}
         <div className={styles.dots} aria-label="Case study navigation">
           {projects.map((_, i) => (
             <button
               key={i}
-              className={`${styles.dot} ${
-                i === activeProject ? styles.dotActive : ""
-              }`}
+              className={`${styles.dot} ${i === activeProject ? styles.dotActive : ""}`}
               onClick={() => outerScrollTo(i)}
               aria-label={`Go to case study ${i + 1}`}
             />
@@ -416,3 +381,4 @@ export default function FeaturedProjects({ locale = "en" }) {
     </section>
   );
 }
+
